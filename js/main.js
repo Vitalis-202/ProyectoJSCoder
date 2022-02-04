@@ -47,15 +47,31 @@ console.log(arrayPoleras);
 document.write("<h1>Primera entrega - Proyecto Coder</h1>");
 document.write("<h3>Listado de Poleras:</h3>");
 
+document.write("<table class='table table-bordered'>");
+document.write("<thead class='thead-dark'>");
+document.write("<tr>");
+document.write("<th>Nombre</th>");
+document.write("<th scope='col'>Detalle</th>");
+document.write("<th scope='col'>Cantidad</th>");
+document.write("<th scope='col'>Talla</th>");
+document.write("<th scope='col'>PrecioBruto</th>");
+document.write("<th scope='col'>PrecioNeto</th>");
+document.write("</tr>");
+document.write("</thead>");
+document.write("<tbody>");
+
 for(const polera of arrayPoleras){
-    document.write("<ul><li><h3>Nombre: "+ polera.nombre+ "</h3></li>");
-    document.write("<li><h3>Detalle: "+ polera.detalle+ "</h3></li>");
-    document.write("<li><h3>Cantidad: "+ polera.cantidad+ "</h3></li>");
-    document.write("<li><h3>Talla: "+ polera.talla+ "</h3></li>");
-    document.write("<li><h3>Precio Bruto: "+ polera.precio+ "</h3></li>");
-    document.write("<li><h3>Precio Neto: "+ polera.sumarIva() + "</h3></li></ul>");
-    document.write("<br>");
+    document.write("<tr>");
+    document.write("<td>"+ polera.nombre+ "</td>");
+    document.write("<td>"+ polera.detalle+ "</td>");
+    document.write("<td>"+ polera.cantidad+ "</td>");
+    document.write("<td>"+ polera.talla+ "</td>");
+    document.write("<td>"+ polera.precio+ "</td>");
+    document.write("<td>"+ polera.sumarIva()+ "</td>");
+    document.write("</tr>");
 }
+document.write("</tbody>");
+document.write("</table>");
 
 //FILTRO DE ARRAY -> PRODUCTOS BAJO STOCK
 //Criterio <= 3
@@ -65,13 +81,26 @@ console.log("Poleras con bajo stock, se sugiere comprar nuevamente");
 console.log(polerasBajoStock);
 //Escribir en documento
 document.write("<h3>Lista de poleras con stock bajo(<=3 unidades):</h3>");
+document.write("<table class='table table-bordered'>");
+document.write("<thead class='thead-dark'>");
+document.write("<tr>");
+document.write("<th>Nombre</th>");
+document.write("<th scope='col'>Detalle</th>");
+document.write("<th scope='col'>Cantidad</th>");
+document.write("</tr>");
+document.write("</thead>");
+document.write("<tbody>");
 
 for(const polera of polerasBajoStock){
-    document.write("<ul><li><h3>Nombre: "+ polera.nombre+ "</h3></li>");
-    document.write("<li><h3>Detalle: "+ polera.detalle+ "</h3></li>");
-    document.write("<li><h3>Cantidad: "+ polera.cantidad+ "</h3></li></ul>");
-    document.write("<br>");
+    document.write("<tr>");
+    document.write("<td>"+ polera.nombre+ "</td>");
+    document.write("<td>"+ polera.detalle+ "</td>");
+    document.write("<td>"+ polera.cantidad+ "</td>");
+    document.write("</tr>");
 }
+document.write("</tbody>");
+document.write("</table>");
+
 
 //FILTRO DE ARRAY -> PRODUCTOS SIN STOCK
 //Criterio = 0
@@ -81,13 +110,25 @@ console.log("Poleras sin stock, se sugiere comprar nuevamente");
 console.log(poleraSinStock);
 //Escribir en documento.
 document.write("<h3>Lista de poleras sin stock:</h3>");
+document.write("<table class='table table-bordered'>");
+document.write("<thead class='thead-dark'>");
+document.write("<tr>");
+document.write("<th>Nombre</th>");
+document.write("<th scope='col'>Detalle</th>");
+document.write("<th scope='col'>Cantidad</th>");
+document.write("</tr>");
+document.write("</thead>");
+document.write("<tbody>");
 
 for(const polera of poleraSinStock){
-    document.write("<ul><li><h3>Nombre: "+ polera.nombre+ "</h3></li>");
-    document.write("<li><h3>Detalle: "+ polera.detalle+ "</h3></li>");
-    document.write("<li><h3>Cantidad: "+ polera.cantidad+ "</h3></li></ul>");
-    document.write("<br>");
+    document.write("<tr>");
+    document.write("<td>"+ polera.nombre+ "</td>");
+    document.write("<td>"+ polera.detalle+ "</td>");
+    document.write("<td>"+ polera.cantidad+ "</td>");
+    document.write("</tr>");
 }
+document.write("</tbody>");
+document.write("</table>");
 
 //BUSQUEDA DE POLERA POR NOMBRE
 let ingresado = prompt("Ingresar el nombre de la polera a buscar");
@@ -96,13 +137,28 @@ let poleraIngresado = arrayPoleras.filter(polera => polera.nombre.includes(ingre
 console.log("Buscando Poleras que contengan nombre " + ingresado);
 console.log(poleraIngresado);
 //Escribir en documento
-document.write("<>Polera(s) que contengan nombre:"+ingresado+"</h3>");
+document.write("<h3>Polera(s) que contengan nombre:"+ingresado+"</h3>");
+
+document.write("<table class='table table-bordered'>");
+document.write("<thead class='thead-dark'>");
+document.write("<tr>");
+document.write("<th>Nombre</th>");
+document.write("<th scope='col'>Detalle</th>");
+document.write("<th scope='col'>Cantidad</th>");
+document.write("</tr>");
+document.write("</thead>");
+document.write("<tbody>");
+
 for(const polera of poleraIngresado){
-    document.write("<ul><li><h3>Nombre: "+ polera.nombre+ "</h3></li>");
-    document.write("<li><h3>Detalle: "+ polera.detalle+ "</h3></li>");
-    document.write("<li><h3>Cantidad: "+ polera.cantidad+ "</h3></li></ul>");
-    document.write("<br>");
+    document.write("<tr>");
+    document.write("<td>"+ polera.nombre+ "</td>");
+    document.write("<td>"+ polera.detalle+ "</td>");
+    document.write("<td>"+ polera.cantidad+ "</td>");
+    document.write("</tr>");
 }
+document.write("</tbody>");
+document.write("<br>");
+document.write("</table>");
 
 //ORDENAR POLERAS -> POR CANTIDAD
 let polerasCantidad = arrayPoleras.map(elemento => elemento);
@@ -114,13 +170,26 @@ console.log("Ordenados por cantidad Ascendente:");
 console.log(polerasCantidad);
 //Escribir en documento
 document.write("<h3>Poleras ordenadas por cantidad ASC:</h3>");
+document.write("<table class='table table-bordered'>");
+document.write("<thead class='thead-dark'>");
+document.write("<tr>");
+document.write("<th>Nombre</th>");
+document.write("<th scope='col'>Detalle</th>");
+document.write("<th scope='col'>Cantidad</th>");
+document.write("</tr>");
+document.write("</thead>");
+document.write("<tbody>");
 
 for(const polera of polerasCantidad){
-    document.write("<ul><li><h3>Nombre: "+ polera.nombre+ "</h3></li>");
-    document.write("<li><h3>Detalle: "+ polera.detalle+ "</h3></li>");
-    document.write("<li><h3>Cantidad: "+ polera.cantidad+ "</h3></li></ul>");
-    document.write("<br>");
+    document.write("<tr>");
+    document.write("<td>"+ polera.nombre+ "</td>");
+    document.write("<td>"+ polera.detalle+ "</td>");
+    document.write("<td>"+ polera.cantidad+ "</td>");
+    document.write("</tr>");
 }
+document.write("</tbody>");
+document.write("<br>");
+document.write("</table>");
 
 //ORDENAR POLERAS -> POR PRECIO
 let polerasPrecio = arrayPoleras.map(elemento => elemento);
@@ -132,10 +201,23 @@ console.log("Ordenados por precio descendente:");
 console.log(polerasPrecio);
 //Escribir en documento
 document.write("<h3>Poleras ordenadas por precio DESC:</h3>");
+document.write("<table class='table table-bordered'>");
+document.write("<thead class='thead-dark'>");
+document.write("<tr>");
+document.write("<th>Nombre</th>");
+document.write("<th scope='col'>Detalle</th>");
+document.write("<th scope='col'>Precio</th>");
+document.write("</tr>");
+document.write("</thead>");
+document.write("<tbody>");
 
 for(const polera of polerasPrecio){
-    document.write("<ul><li><h3>Nombre: "+ polera.nombre+ "</h3></li>");
-    document.write("<li><h3>Detalle: "+ polera.detalle+ "</h3></li>");
-    document.write("<li><h3>Precio: "+ polera.precio+ "</h3></li></ul>");
-    document.write("<br>");
+    document.write("<tr>");
+    document.write("<td>"+ polera.nombre+ "</td>");
+    document.write("<td>"+ polera.detalle+ "</td>");
+    document.write("<td>"+ polera.precio+ "</td>");
+    document.write("</tr>");
 }
+document.write("</tbody>");
+document.write("<br>");
+document.write("</table>");
